@@ -19,7 +19,7 @@ jobs:
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
-        with: 
+        with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: main 
-          FOLDER: Authentication-Client
+          BRANCH: main  # Deploy directly to the `main` branch
+          FOLDER: index.html # Replace `build` with the folder where your static files are located
