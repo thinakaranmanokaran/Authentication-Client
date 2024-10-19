@@ -12,14 +12,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install dependencies and build (optional)
+      - name: Install dependencies and build
         run: |
           npm install
-          npm run build # Use this if you're building a static site with a tool like React or Vite
+          npm run build # This builds the project (Vite in this case)
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: main  # Deploy directly to the `main` branch
-          FOLDER: index.html # Replace `build` with the folder where your static files are located
+          BRANCH: main  # You're deploying directly to the `main` branch
+          FOLDER: dist  # This should be the folder, not a specific file (e.g., dist, not /dist/index.html)
