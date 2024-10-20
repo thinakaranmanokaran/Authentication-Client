@@ -1,25 +1,30 @@
-name: Deploy to GitHub Pages from Main
+name: Deploy Vite Project to GitHub Pages
 
 on:
   push:
     branches:
-      - main
+      - main  # Deploy when changes are pushed to the `main` branch
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install dependencies and build
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'  # Use your desired Node.js version
+
+      - name: Install dependencies and build the project
         run: |
           npm install
-          npm run build # This builds the project (Vite in this case)
+          npm run build
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: main  # You're deploying directly to the `main` branch
-          FOLDER: dist  # This should be the folder, not a specific file (e.g., dist, not /dist/index.html)
+          BRANCH: gh-pages  # This is the branch GitHub Pages will serve
+          FOLDER: dist  # The folder where Vite outputs the build
