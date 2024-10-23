@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'genova';
+    src: url('./assets/fonts/CreatoDisplay-Regular.otf');
+}
+
+@font-face {
+    font-family: 'justsans';
+    src: url('./assets/fonts/Avigea.ttf');
+}
+
+*{
+    font-family: genova;
+}
